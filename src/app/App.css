@@ -1,0 +1,11 @@
+body {
+  background-color: #282c34;
+}
+
+.App {
+  height: 100vh;
+}
+
+.data-container {
+  padding-top: 30px;
+}
