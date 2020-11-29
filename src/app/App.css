@@ -1,11 +1,9 @@
 body {
-  background-color: #282c34;
+  background: #212121;
 }
 
 .App {
   height: 100vh;
 }
 
-.data-container {
-  padding-top: 30px;
-}
+

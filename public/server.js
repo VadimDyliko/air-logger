@@ -1,7 +1,9 @@
-(function () {
-    var app = require('express')();
-    var http = require('http').createServer(app);
-    var io = require('socket.io')(http);
+const DEFAULT_PORT = 4000;
+
+function initServer(port) {
+    const app = require('express')();
+    const http = require('http').createServer(app);
+    const io = require('socket.io')(http);
     const express = require('express');
     const path = require('path');
     const bodyParser = require('body-parser');
@@ -20,9 +22,8 @@
         res.sendFile(path.join(__dirname, '../build', 'index.html'));
     });
 
-    let server = http.listen(4000, function () {
-        console.log('Express server listening on port ' + server.address().port);
-    });
-
+    http.listen(port || DEFAULT_PORT);
     module.exports = app;
-})();
+}
+
+module.exports = initServer;

@@ -1,43 +1,36 @@
-import React, { useCallback, useEffect, useState } from 'react';
-import openSocket from 'socket.io-client';
+import React from 'react';
+import 'fontsource-roboto';
 import './App.css';
-import ValueView from './components/ValueView/ValueView';
-import ToolBar from './components/ToolBar';
+import Content from './Content';
+import SettingsProvider from './containers/SettingsProvider/SettingsProvider';
+import ThemeProvider from '@material-ui/core/styles/ThemeProvider';
+import { createMuiTheme } from '@material-ui/core';
+
+const theme = createMuiTheme({
+    palette: {
+        mode: 'dark',
+        primary: {
+            light: '#757ce8',
+            main: '#3f50b5',
+            dark: '#002884',
+            contrastText: '#fff',
+        },
+        secondary: {
+            light: '#ff7961',
+            main: '#f44336',
+            dark: '#ba000d',
+            contrastText: '#fff',
+        },
+    },
+});
 
 function App() {
-    const [data, setData] = useState([]);
-
-    useEffect(() => {
-        const socket = openSocket('/');
-        socket.on('debugLog', loggedData => {
-            setData(prev => [loggedData, ...prev]);
-        });
-    }, []);
-
-    const clearData = useCallback(() => {
-        setData([]);
-    }, []);
-
     return (
-        <div className="App">
-            <ToolBar clearData={clearData} />
-            <div className={'data-container'}>
-                {data.map(item => {
-                    const { time: timestamp, data, type, color, device, id } = item || {};
-                    return (
-                        <div key={id}>
-                            <ValueView
-                                data={data}
-                                timestamp={timestamp}
-                                type={type}
-                                color={color}
-                                //device={device} // TODO: Add device info
-                            />
-                        </div>
-                    );
-                })}
-            </div>
-        </div>
+        <SettingsProvider>
+            <ThemeProvider theme={theme}>
+                <Content />
+            </ThemeProvider>
+        </SettingsProvider>
     );
 }
 
