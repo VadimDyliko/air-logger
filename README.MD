@@ -6,7 +6,7 @@ Minimalistic data logger for React Native without debugger mode.
 # Air Logger
 ![](https://github.com/VadimDyliko/air-logger/blob/master/img/Screenshot1.png?raw=true)
 ### Installation:
-On the Releases page, you can find the latest version for macOS.
+On the [Releases](https://github.com/VadimDyliko/air-logger/releases "Releases") page, you can find the latest version for macOS.
 ##### Install client for Your app:
 `npm i --save-dev air-logger-rn`
 ##### In Your app entry point (`App.js`) init Air Logger:
