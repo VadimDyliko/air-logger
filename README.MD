@@ -5,7 +5,7 @@ Minimalistic data logger for React Native without debugger mode.
 - Mark important logged data by different colors;
 # Air Logger
 ![](https://github.com/VadimDyliko/air-logger/blob/master/img/Screenshot1.png?raw=true)
-###Instalation:
+### Installation:
 On the Releases page, you can find the latest version for macOS.
 ##### Install client for Your app:
 `npm i --save-dev air-logger-rn`
