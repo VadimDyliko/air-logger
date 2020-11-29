@@ -1,5 +1,4 @@
 const electron = require('electron');
-
 const { ipcMain } = require('electron');
 const Store = require('electron-store');
 const store = new Store();
@@ -12,11 +11,7 @@ const windowStateKeeper = require('electron-window-state');
 let mainWindow;
 
 app.on('ready', createWindow);
-app.on('window-all-closed', () => {
-    if (process.platform !== 'darwin') {
-        app.quit();
-    }
-});
+app.on('window-all-closed', app.quit);
 app.on('activate', () => {
     if (mainWindow === null) {
         createWindow();
@@ -32,7 +27,7 @@ async function createWindow() {
         return store.set(key, value);
     });
 
-    let mainWindowState = windowStateKeeper({
+    const mainWindowState = windowStateKeeper({
         defaultWidth: 640,
         defaultHeight: 480,
     });
@@ -52,8 +47,11 @@ async function createWindow() {
     mainWindowState.manage(mainWindow);
 
     await mainWindow.loadURL(
-        isDev ? 'http://localhost:3000' : `http://localhost:${PORT || 4000}/ui`
+        isDev ? 'http://localhost:3000/logView' : `http://localhost:${PORT || 4000}/logView`
     );
-    mainWindow.webContents.openDevTools();
+
+    if (isDev) {
+        mainWindow.webContents.openDevTools();
+    }
     mainWindow.on('closed', () => (mainWindow = null));
 }

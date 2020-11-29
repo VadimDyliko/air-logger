@@ -1,5 +1,5 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom';
 import { Settings } from '@material-ui/icons';
 
@@ -23,7 +23,7 @@ const useStyles = makeStyles({
         bottom: 0,
         height: 30,
         width: '100%',
-        backgroundColor: 'rgba(36, 36, 36, 0.45)',
+        backdropFilter: 'blur(2px)',
         zIndex: 5,
         display: 'flex',
         alignItems: 'center',

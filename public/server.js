@@ -18,7 +18,7 @@ function initServer(port) {
         });
     });
 
-    app.get('/ui', function (req, res) {
+    app.get('/*', function (req, res) {
         res.sendFile(path.join(__dirname, '../build', 'index.html'));
     });
 

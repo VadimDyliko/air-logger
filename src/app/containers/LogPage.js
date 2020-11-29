@@ -1,12 +1,11 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import ValueView from '../components/ValueView';
-import { makeStyles } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
+import useLogViewScroll from '../hooks/useLogViewScroll';
 
 export default function LogPage({ data }) {
     const classes = useStyles();
-    useEffect(() => {
-        window.scrollTo(0, document.body.scrollHeight);
-    }, [data]);
+    useLogViewScroll(data);
 
     return (
         <div className={classes.container}>

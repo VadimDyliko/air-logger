@@ -14,3 +14,20 @@ export const colors = {
     GREY: '#e0e0e0',
     WHITE: '#f5f5f5',
 };
+
+export const colorNames = {
+    RED: 'RED',
+    PINK: 'PINK',
+    PURPLE: 'PURPLE',
+    DEEP_PURPLE: 'DEEP_PURPLE',
+    INDIGO: 'INDIGO',
+    BLUE: 'BLUE',
+    CYAN: 'CYAN',
+    TEAL: 'TEAL',
+    GREEN: 'GREEN',
+    LIME: 'LIME',
+    YELLOW: 'YELLOW',
+    ORANGE: 'ORANGE',
+    GREY: 'GREY',
+    WHITE: 'WHITE',
+};

@@ -1,5 +1,4 @@
-import React, { useCallback, useEffect, useRef } from 'react';
-import './SettingsPage.css';
+import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import {
     Button,
@@ -9,20 +8,21 @@ import {
     Slider,
     Typography,
     ButtonGroup,
-    Paper,
 } from '@material-ui/core';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import { Save as SaveIcon, ArrowBack as BackIcon } from '@material-ui/icons';
-import { useSettings } from '../SettingsProvider/SettingsProvider';
-import { SETTINGS_KEYS } from '../SettingsProvider/hooks/useSettingsState';
+import { useSettings } from './SettingsProvider/SettingsProvider';
+import { SETTINGS_KEYS } from './SettingsProvider/hooks/useSettingsState';
 import { useHistory } from 'react-router-dom';
+import { makeStyles } from '@material-ui/core/styles';
 
 export default function SettingsPage() {
     const { state, actions } = useSettings();
     const history = useHistory();
+    const classes = useStyles();
 
     return (
-        <Container className={'settings-page'} maxWidth="sm">
+        <Container className={classes.settingsPage} maxWidth="sm">
             <FormGroup>
                 <TextField
                     fullWidth
@@ -57,7 +57,7 @@ export default function SettingsPage() {
                     valueLabelDisplay="auto"
                     step={1}
                     marks
-                    min={1}
+                    min={0}
                     max={20}
                     onChange={({ target: { value } }) =>
                         actions.setValue(SETTINGS_KEYS.PREVIEW_ARRAY_COUNT, value)
@@ -71,7 +71,7 @@ export default function SettingsPage() {
                     valueLabelDisplay="auto"
                     step={1}
                     marks
-                    min={1}
+                    min={0}
                     max={20}
                     onChange={({ target: { value } }) =>
                         actions.setValue(SETTINGS_KEYS.PREVIEW_FIELD_COUNT, value)
@@ -99,3 +99,9 @@ export default function SettingsPage() {
         </Container>
     );
 }
+
+const useStyles = makeStyles({
+    settingsPage: {
+        paddingTop: 30,
+    },
+});
